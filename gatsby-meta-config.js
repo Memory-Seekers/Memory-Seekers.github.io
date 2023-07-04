@@ -20,7 +20,7 @@ const metaConfig = {
   title: "Memory-Seekers",
   description: `Memory-Seekers Blog`,
   author: "Memory-Seekers",
-  siteUrl: "https://memory-seekers.github.io/",
+  siteUrl: "https://memory-seekers.github.io",
   lang: "ko",
   utterances: "sungik-choi/gatsby-starter-apple-comment",
   links: {
