@@ -190,4 +190,5 @@ module.exports = {
     ...searchPlugins,
     ...pwaPlugins,
   ],
+  pathPrefix: "/",
 }
