@@ -8,6 +8,8 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
+  pull_request:
+    branches: ["main"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -56,14 +58,6 @@ jobs:
         with:
           node-version: "18"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-      # - name: Setup Pages
-      #   id: pages
-      #   uses: actions/configure-pages@v3
-      #   with:
-      #     # Automatically inject pathPrefix in your Gatsby configuration file.
-      #     #
-      #     # You may remove this line if you want to manage the configuration yourself.
-      #     static_site_generator: gatsby
       - name: Restore cache
         uses: actions/cache@v3
         with:
@@ -73,11 +67,13 @@ jobs:
           key: ${{ runner.os }}-gatsby-build-${{ hashFiles('public') }}
           restore-keys: |
             ${{ runner.os }}-gatsby-build-
-      - name: Upload directory as artifact
-        uses: actions/upload-artifact@v2
+      - name: Cache dependencies
+        uses: actions/cache@v3
         with:
-          name: directory-contents
-          path: /home/runner/work/
+          path: ~/.yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
       - name: Install dependencies
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
       - name: Build with Gatsby
