@@ -170,8 +170,7 @@ const LinkUl = styled.ul<Toggleable>`
     }
   }
 
-  a:hover,
-  a:focus {
+  a:hover {
     background: var(--color-menubar-hover-bg);
   }
 
