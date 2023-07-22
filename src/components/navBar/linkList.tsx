@@ -2,8 +2,10 @@ import React from "react"
 
 import { Link } from "gatsby"
 import { isNil } from "lodash"
+import styled from "styled-components"
 
 import type { UseSiteMetaDataReturnType } from "~/src/hooks/useSiteMetadata"
+import GlobalStyle from "~/src/styles/globalStyle"
 
 import type { UseMenuReturnType } from "./useMenu"
 
@@ -27,9 +29,13 @@ const LinkList: React.FC<LinkListProps> = ({ links, setToggle }) => {
     if (safeLink === ROOT) {
       return (
         <li key={name}>
-          <Link to={safeLink} onClick={() => setToggle(false)}>
+          <NavLink
+            to={safeLink}
+            activeClassName="active"
+            onClick={() => setToggle(false)}
+          >
             {name}
-          </Link>
+          </NavLink>
         </li>
       )
     }
@@ -44,12 +50,22 @@ const LinkList: React.FC<LinkListProps> = ({ links, setToggle }) => {
     }
     return (
       <li key={name}>
-        <Link to={safeLink}>{name}</Link>
+        <NavLink to={safeLink} activeClassName="active">
+          {name}
+        </NavLink>
       </li>
     )
   }
 
   return <>{links?.map(generateLink)}</>
 }
+
+const NavLink = styled(Link)`
+  &.active {
+    width: 100%;
+    background-color: var(--color-menubar-hover-bg);
+    color: black;
+  }
+`
 
 export default LinkList

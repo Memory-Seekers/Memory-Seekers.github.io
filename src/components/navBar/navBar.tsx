@@ -38,43 +38,61 @@ const NavBar: React.FC<NavBarProps> = ({ title, themeToggler }) => {
   })
 
   return (
-    <Nav ref={navRef} aria-label="Global Navigation">
-      <NavBackground toggle={toggle} />
-      <Content>
+    <Container>
+      <Profile>
         <Title onClick={() => setToggle(false)}>
           <Link to="/">{title}</Link>
         </Title>
-        <LinkWrap>
-          <Curtain ref={curtainRef} toggle={toggle} />
-          <LinkContent>
-            <MenuIcon toggle={toggle} handleClick={handleClick} />
-            <LinkUl ref={listRef} toggle={toggle}>
-              <LinkList links={menuLinks} setToggle={setToggle} />
-              <li>
-                <ThemeToggleButton themeToggler={themeToggler} />
-              </li>
-            </LinkUl>
-          </LinkContent>
-        </LinkWrap>
-      </Content>
-    </Nav>
+      </Profile>
+      <Nav ref={navRef} aria-label="Global Navigation">
+        {/* <NavBackground toggle={toggle} /> */}
+        {/* <Content>
+          <LinkWrap> */}
+        {/* <Curtain ref={curtainRef} toggle={toggle} /> */}
+        {/* <LinkContent> */}
+        <MenuIcon toggle={toggle} handleClick={handleClick} />
+        <LinkUl ref={listRef} toggle={toggle}>
+          <LinkList links={menuLinks} setToggle={setToggle} />
+          <li>{/* <ThemeToggleButton themeToggler={themeToggler} /> */}</li>
+        </LinkUl>
+        {/* </LinkContent>
+          </LinkWrap>
+        </Content> */}
+      </Nav>
+    </Container>
   )
 }
 
 type Toggleable = Pick<UseMenuReturnType, "toggle">
 
-const Nav = styled.nav`
-  min-width: var(--min-width);
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: var(--nav-height);
-  z-index: 10;
+const Container = styled.header`
+  width: 260px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-nav-bar);
+  position: fixed;
+`
 
-  a:hover {
-    text-decoration: none;
-  }
+const Profile = styled.div`
+  width: 100%;
+  margin-top: 3rem;
+  margin-bottom: 2.5rem;
+  padding-left: 2.5rem;
+  padding-right: 1.25rem;
+`
+
+const Nav = styled.nav`
+  // min-width: var(--min-width);
+  // position: fixed;
+  // top: 0;
+  // left: 0;
+  // height: 100%;
+  // z-index: 10;
+
+  // a:hover {
+  //   text-decoration: none;
+  // }
 `
 
 const Content = styled.div`
@@ -86,8 +104,8 @@ const Content = styled.div`
   height: 100%;
   z-index: 2;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
 
   li {
     margin: 0;
@@ -118,21 +136,38 @@ const Title = styled.h1`
 
 const LinkUl = styled.ul<Toggleable>`
   display: flex;
+  flex-direction: column;
 
   a {
+    width: 100%;
     font-weight: var(--font-weight-regular);
+    text-transform: uppercase;
+    padding: 1rem 0.6rem;
+    border-radius: 0.75rem;
+  }
+
+  @media (hover: hover) {
+    a {
+      transition: background-color 0.3s ease-in-out;
+    }
   }
 
   a:hover,
   a:focus {
-    color: var(--color-blue);
+    background: var(--color-menubar-hover-bg);
   }
 
   li {
+    width: 100%;
+    padding: 0 1.5rem;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    margin-left: 32px;
+    // margin-left: 32px;
+  }
+
+  li:not(:first-child) {
+    margin-top: 0.25rem;
   }
 
   li:first-child,
@@ -156,7 +191,7 @@ const LinkUl = styled.ul<Toggleable>`
     }
 
     a {
-      display: block;
+      display: flex;
       height: 100%;
       padding: 0.5rem 0;
       font-weight: var(--font-weight-medium);

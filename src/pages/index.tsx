@@ -68,7 +68,8 @@ const Home = ({
 const Main = styled.main`
   min-width: var(--min-width);
   min-height: calc(100vh - var(--nav-height) - var(--footer-height));
-  background-color: var(--color-background);
+  background-color: var(--color-white);
+  margin-left: 260px;
 `
 
 const Content = styled.div`

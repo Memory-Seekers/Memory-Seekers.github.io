@@ -17,7 +17,7 @@
 
 /** @type {MetaConfig} */
 const metaConfig = {
-  title: "Dev Ed",
+  title: "Memory-Seekers",
   description: `Ed's Blog`,
   author: "Ed",
   siteUrl: "https://gatsby-starter-apple.netlify.app",
