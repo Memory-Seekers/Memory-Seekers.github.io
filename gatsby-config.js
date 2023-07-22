@@ -45,7 +45,7 @@ const corePlugins = [
     resolve: "gatsby-plugin-react-svg",
     options: {
       rule: {
-        include: /icons/, // See below to configure properly
+        include: /images\/icons/, // See below to configure properly
       },
     },
   },
