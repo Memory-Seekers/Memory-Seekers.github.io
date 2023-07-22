@@ -162,7 +162,7 @@ const LinkUl = styled.ul<Toggleable>`
     font-size: 0.9rem;
     color: var(--color-gray-3);
     text-transform: uppercase;
-    padding: 1rem 0.6rem;
+    padding: 0.75rem 1rem;
     border-radius: 0.75rem;
   }
 
