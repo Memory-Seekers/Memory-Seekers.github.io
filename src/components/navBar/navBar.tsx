@@ -85,7 +85,7 @@ const Profile = styled.div`
   margin-top: 3rem;
   margin-bottom: 2.5rem;
   padding-left: 2.5rem;
-  padding-right: 1.25rem;
+  padding-right: 1.5rem;
 `
 
 const Nav = styled.nav`
