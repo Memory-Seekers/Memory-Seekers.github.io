@@ -5,10 +5,10 @@ import { isNil } from "lodash"
 import styled from "styled-components"
 
 import type { UseSiteMetaDataReturnType } from "~/src/hooks/useSiteMetadata"
-import HomeIcon from "~/src/images/Home.svg"
 import GlobalStyle from "~/src/styles/globalStyle"
 
 import GithubIcon from "../../images/icons/github-mark.svg"
+import HomeIcon from "../../images/icons/home_black_24dp.svg"
 import AboutIcon from "../../images/icons/info_black_24dp.svg"
 
 import type { UseMenuReturnType } from "./useMenu"
