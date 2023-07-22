@@ -15,7 +15,7 @@ const { name, homepage } = packageJSON
 
 const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
   const { theme, themeToggler } = useTheme()
-  const { title, author } = useSiteMetadata()
+  const { title, description, author } = useSiteMetadata()
   const copyrightStr = `Copyright © ${author}. Built with `
 
   return (
@@ -23,7 +23,11 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
       <ThemeContext.Provider value={theme}>
         <GlobalStyle />
         <Container>
-          <NavBar title={title} themeToggler={themeToggler} />
+          <NavBar
+            title={title}
+            description={description}
+            themeToggler={themeToggler}
+          />
           {children}
         </Container>
         <Footer role="contentinfo">

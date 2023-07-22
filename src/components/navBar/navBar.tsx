@@ -12,18 +12,26 @@ import {
   navBackgroundAnimationCSS,
 } from "~/src/styles/navBarAnimation"
 
+import logo from "../../images/Logo.png"
+
 import LinkList from "./linkList"
-import MenuIcon from "./menuIcon"
-import ThemeToggleButton from "./themeToggleButton"
 import useMenu from "./useMenu"
 import type { UseMenuReturnType } from "./useMenu"
 
+import "@fontsource/roboto"
+import "@fontsource/noto-sans-kr"
+
 interface NavBarProps {
   title?: string | null
+  description?: string | null
   themeToggler: UseThemeReturnType["themeToggler"]
 }
 
-const NavBar: React.FC<NavBarProps> = ({ title, themeToggler }) => {
+const NavBar: React.FC<NavBarProps> = ({
+  title,
+  description,
+  themeToggler,
+}) => {
   const { menuLinks } = useSiteMetadata()
   const { device } = useContext(ThemeContext)
   const navRef = useRef<HTMLElement>(null)
@@ -40,30 +48,30 @@ const NavBar: React.FC<NavBarProps> = ({ title, themeToggler }) => {
   return (
     <Container>
       <Profile>
+        <Link to="/">
+          <LogoImg src={logo} />
+        </Link>
         <Title onClick={() => setToggle(false)}>
           <Link to="/">{title}</Link>
         </Title>
+
+        <SubTitle>{description}</SubTitle>
       </Profile>
       <Nav ref={navRef} aria-label="Global Navigation">
-        {/* <NavBackground toggle={toggle} /> */}
-        {/* <Content>
-          <LinkWrap> */}
-        {/* <Curtain ref={curtainRef} toggle={toggle} /> */}
-        {/* <LinkContent> */}
-        <MenuIcon toggle={toggle} handleClick={handleClick} />
         <LinkUl ref={listRef} toggle={toggle}>
           <LinkList links={menuLinks} setToggle={setToggle} />
-          <li>{/* <ThemeToggleButton themeToggler={themeToggler} /> */}</li>
         </LinkUl>
-        {/* </LinkContent>
-          </LinkWrap>
-        </Content> */}
       </Nav>
     </Container>
   )
 }
 
 type Toggleable = Pick<UseMenuReturnType, "toggle">
+
+const LogoImg = styled.img`
+  width: 7rem;
+  height: 7rem;
+`
 
 const Container = styled.header`
   width: 260px;
@@ -123,7 +131,10 @@ const Title = styled.h1`
   border: none;
   font-size: var(--text-title);
   font-weight: var(--font-weight-semi-bold);
-  color: var(--color-text);
+  color: var(--color-text-3);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-family: "Roboto", sans-serif;
 
   a {
     color: inherit;
@@ -134,13 +145,22 @@ const Title = styled.h1`
   }
 `
 
+const SubTitle = styled.div`
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 14px;
+  color: var(--color-gray-4);
+`
+
 const LinkUl = styled.ul<Toggleable>`
   display: flex;
   flex-direction: column;
 
   a {
     width: 100%;
-    font-weight: var(--font-weight-regular);
+    font-weight: var(--font-weight-semi-bold);
+    font-family: "Roboto", sans-serif;
+    font-size: 0.9rem;
+    color: var(--color-gray-3);
     text-transform: uppercase;
     padding: 1rem 0.6rem;
     border-radius: 0.75rem;
