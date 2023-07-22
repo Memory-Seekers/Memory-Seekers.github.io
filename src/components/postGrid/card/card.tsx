@@ -23,7 +23,7 @@ const Card: React.FC<CardProps> = ({
 }) => {
   return (
     <Wrapper>
-      <CenteredImg src={thumbnail} alt={alt} />
+      {/* <CenteredImg src={thumbnail} alt={alt} /> */}
       <Text>
         <div>
           <Category>{category}</Category>
@@ -43,7 +43,9 @@ const Wrapper = styled.div`
   overflow: hidden;
   height: 100%;
   border-radius: var(--border-radius-base);
-  background-color: var(--color-card);
+  border: solid;
+  border-width: 2px;
+  border-color: var(--color-gray-1);
 
   /* Fix Safari overflow:hidden with border radius not working error */
   transform: translateZ(0);

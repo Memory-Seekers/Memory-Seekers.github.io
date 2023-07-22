@@ -56,7 +56,7 @@ const Home = ({
       <SEO title="Home" />
       <Main>
         <Content>
-          <CategoryFilter categoryList={data.allMarkdownRemark.group} />
+          {/* <CategoryFilter categoryList={data.allMarkdownRemark.group} /> */}
           <PostTitle>{postTitle}</PostTitle>
           <PostGrid posts={posts} />
         </Content>
@@ -66,7 +66,8 @@ const Home = ({
 }
 
 const Main = styled.main`
-  min-width: var(--min-width);
+  // min-width: var(--min-width);
+  width: 100%;
   min-height: calc(100vh - var(--nav-height) - var(--footer-height));
   background-color: var(--color-white);
   margin-left: 260px;
