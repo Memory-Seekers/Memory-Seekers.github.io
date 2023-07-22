@@ -51,9 +51,7 @@ const NavBar: React.FC<NavBarProps> = ({
         <Link to="/">
           <LogoImg src={logo} />
         </Link>
-        <Title onClick={() => setToggle(false)}>
-          <Link to="/">{title}</Link>
-        </Title>
+        <Title onClick={() => setToggle(false)}>{title}</Title>
 
         <SubTitle>{description}</SubTitle>
       </Profile>
