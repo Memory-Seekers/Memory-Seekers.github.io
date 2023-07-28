@@ -30,14 +30,14 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
           />
           {children}
         </Container>
-        <Footer role="contentinfo">
+        {/* <Footer role="contentinfo">
           <Copyright aria-label="Copyright">
             {copyrightStr}
             <RepoLink href={homepage} target="__blank">
               {name}
             </RepoLink>
           </Copyright>
-        </Footer>
+        </Footer> */}
       </ThemeContext.Provider>
     </ThemeProvider>
   )
