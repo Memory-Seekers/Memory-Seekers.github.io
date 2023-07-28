@@ -11,6 +11,8 @@ import useSiteMetadata from "~/src/hooks/useSiteMetadata"
 import Layout from "~/src/layouts/layout"
 import type Post from "~/src/types/Post"
 
+import "@fontsource/roboto"
+
 const Home = ({
   pageContext,
   data,
@@ -56,8 +58,8 @@ const Home = ({
       <SEO title="Home" />
       <Main>
         <Content>
-          <CategoryFilter categoryList={data.allMarkdownRemark.group} />
-          <PostTitle>{postTitle}</PostTitle>
+          {/* <CategoryFilter categoryList={data.allMarkdownRemark.group} /> */}
+          <PostTitle>Team's Blog</PostTitle>
           <PostGrid posts={posts} />
         </Content>
       </Main>
@@ -66,9 +68,13 @@ const Home = ({
 }
 
 const Main = styled.main`
-  min-width: var(--min-width);
+  // min-width: var(--min-width);
+  width: 100%;
   min-height: calc(100vh - var(--nav-height) - var(--footer-height));
-  background-color: var(--color-background);
+  background-color: var(--color-white);
+  margin-left: 260px;
+  display: flex;
+  padding-left: 5rem;
 `
 
 const Content = styled.div`
@@ -77,7 +83,6 @@ const Content = styled.div`
   max-width: var(--width);
   padding-top: var(--sizing-lg);
   padding-bottom: var(--sizing-lg);
-  margin: 0 auto;
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     padding-top: var(--grid-gap-lg);
@@ -86,7 +91,9 @@ const Content = styled.div`
 `
 
 const PostTitle = styled.h2`
-  font-size: 2rem;
+  font-family: "Roboto", sans-serif;
+  font-size: var(--text-base);
+  color: var(--color-text-3);
   font-weight: var(--font-weight-extra-bold);
   margin-bottom: var(--sizing-md);
   line-height: 1.21875;

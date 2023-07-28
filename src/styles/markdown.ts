@@ -1,6 +1,7 @@
 import styled from "styled-components"
 
 import type typography from "./typography"
+import "@fontsource/noto-sans-kr"
 
 const Markdown = styled.article<{ rhythm: (typeof typography)["rhythm"] }>`
   h1,
@@ -24,6 +25,7 @@ const Markdown = styled.article<{ rhythm: (typeof typography)["rhythm"] }>`
   a,
   p {
     font-weight: var(--font-weight-regular);
+    font-family: "Noto Sans KR", sans-serif;
   }
 
   a {
@@ -84,6 +86,7 @@ const Markdown = styled.article<{ rhythm: (typeof typography)["rhythm"] }>`
     margin-top: ${({ rhythm }) => rhythm(1)};
     margin-bottom: ${({ rhythm }) => rhythm(1)};
     margin-left: ${({ rhythm }) => rhythm(1.25)};
+    list-style: disc;
   }
 
   li > ul,
@@ -109,6 +112,8 @@ const Markdown = styled.article<{ rhythm: (typeof typography)["rhythm"] }>`
   li,
   blockquote {
     font-size: 1.0625rem;
+    font-family: "Noto Sans KR", sans-serif;
+    line-height: normal;
   }
 
   p {
