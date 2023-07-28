@@ -7,6 +7,7 @@ import DateTime from "~/src/styles/dateTime"
 import type Post from "~/src/types/Post"
 
 import CenteredImg from "./centeredImg"
+import "@fontsource/noto-sans-kr"
 
 type CardProps = Pick<
   Post,
@@ -26,7 +27,7 @@ const Card: React.FC<CardProps> = ({
       {/* <CenteredImg src={thumbnail} alt={alt} /> */}
       <Text>
         <div>
-          <Category>{category}</Category>
+          {/* <Category>{category}</Category> */}
           <Title>{title}</Title>
           <Desc>{desc}</Desc>
         </div>
@@ -64,8 +65,8 @@ const Text = styled.div`
 `
 
 const Title = styled.h3`
-  margin-top: var(--sizing-xs);
-  font-size: var(--text-lg);
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: var(--text-title);
   font-weight: var(--font-weight-bold);
   line-height: 1.3;
 
@@ -79,10 +80,11 @@ const Title = styled.h3`
 `
 
 const Desc = styled.p`
+  font-family: "Noto Sans KR", sans-serif;
   line-height: 1.5;
   margin-top: 8px;
   padding-bottom: var(--sizing-sm);
-  color: var(--color-text-2);
+  color: var(--color-text-3);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
