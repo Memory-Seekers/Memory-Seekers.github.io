@@ -62,7 +62,7 @@ const GlobalStyle = createGlobalStyle`
       --color-text-2: #1d1d1d;
       --color-text-3: #696969;
       --color-white: #ffffff;
-      --color-nav-bar: rgba(255, 255, 255, 0.7);
+      --color-nav-bar: #f6f8fa;
       --color-nav-border: rgba(200, 200, 200, 0.7);
       --color-category-button: #f2f2f2;
       --color-background: #f2f2f2;
@@ -90,6 +90,7 @@ const GlobalStyle = createGlobalStyle`
       --color-floating-button-shadow-hover: rgba(0, 0, 0, 0.4);
       --color-blue: #0066cc;
       --color-icon: #2c2c2c;
+      --color-menubar-hover-bg: rgba(223, 233, 241, 0.64);
     }
 
     body.dark {

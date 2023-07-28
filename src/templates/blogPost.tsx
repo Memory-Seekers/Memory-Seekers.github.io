@@ -46,9 +46,9 @@ const BlogPost: React.FC<PageProps<Queries.Query>> = ({ data }) => {
             </InnerWrapper>
           </OuterWrapper>
         </article>
-        <CommentWrap>
+        {/* <CommentWrap>
           <Comment />
-        </CommentWrap>
+        </CommentWrap> */}
       </main>
     </Layout>
   )
@@ -56,6 +56,8 @@ const BlogPost: React.FC<PageProps<Queries.Query>> = ({ data }) => {
 
 const OuterWrapper = styled.div`
   margin-top: var(--sizing-xl);
+  margin-left: 260px;
+  width: 100%;
 
   @media (max-width: ${({ theme }) => theme.device.sm}) {
     margin-top: var(--sizing-lg);

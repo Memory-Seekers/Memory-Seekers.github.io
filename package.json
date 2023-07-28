@@ -23,6 +23,8 @@
     "postinstall": "husky install"
   },
   "dependencies": {
+    "@fontsource/noto-sans-kr": "^5.0.5",
+    "@fontsource/roboto": "^5.0.5",
     "dark-github-theme": "https://github.com/remorses/dark-github-theme",
     "gatsby": "^5.10.0",
     "gatsby-plugin-feed": "^5.10.0",
@@ -30,6 +32,7 @@
     "gatsby-plugin-manifest": "^5.10.0",
     "gatsby-plugin-offline": "^6.10.0",
     "gatsby-plugin-react-helmet": "^6.10.0",
+    "gatsby-plugin-react-svg": "^3.3.0",
     "gatsby-plugin-sharp": "^5.10.0",
     "gatsby-plugin-sitemap": "^6.10.0",
     "gatsby-plugin-styled-components": "^6.10.0",
