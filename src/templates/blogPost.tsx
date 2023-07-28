@@ -11,6 +11,8 @@ import DateTime from "~/src/styles/dateTime"
 import Markdown from "~/src/styles/markdown"
 import { rhythm } from "~/src/styles/typography"
 
+import "@fontsource/noto-sans-kr"
+
 const BlogPost: React.FC<PageProps<Queries.Query>> = ({ data }) => {
   const { markdownRemark } = data
   const { frontmatter, html } = markdownRemark!
@@ -34,10 +36,12 @@ const BlogPost: React.FC<PageProps<Queries.Query>> = ({ data }) => {
                     <PostCategory>{category}</PostCategory>
                     <Time dateTime={date!}>{date}</Time>
                   </Info>
-                  <Title>{title}</Title>
-                  <Desc>{desc}</Desc>
+                  <Header>
+                    <Title>{title}</Title>
+                  </Header>
+                  {/* <Desc>{desc}</Desc>  */}
                 </header>
-                <Divider />
+                {/* <Divider /> */}
                 <Markdown
                   dangerouslySetInnerHTML={{ __html: html ?? "" }}
                   rhythm={rhythm}
@@ -94,6 +98,10 @@ const Info = styled.div`
   margin-bottom: var(--sizing-md);
 `
 
+const Header = styled.div`
+  margin-bottom: var(--sizing-xl);
+`
+
 const Time = styled(DateTime)`
   display: block;
   margin-top: var(--sizing-xs);
@@ -119,7 +127,8 @@ const Divider = styled.div`
 `
 
 const Title = styled.h1`
-  font-weight: var(--font-weight-bold);
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: var(--font-weight-semi-bold);
   line-height: 1.1875;
   font-size: var(--text-xl);
 
