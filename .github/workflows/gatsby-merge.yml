@@ -28,7 +28,7 @@ jobs:
       - name: Checkout main branch
         run: |
           git status
-          git fetch origin dev:dev
+          git pull origin dev
           git branch -r
           git branch
           git log --oneline
