@@ -1,12 +1,12 @@
-name: Build Gatsby site
+name: Build Gatsby site & Deploy
 
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["dev"]
+    branches: ["dev", "main"]
   pull_request:
     branches: ["dev"]
-    types: [opened, synchronize, reopened, closed]
+    types: [opened, synchronize, reopened]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -31,6 +31,7 @@ defaults:
 jobs:
   # Build job
   build:
+    if: (github.event_name == 'push' && (github.ref == 'refs/heads/dev' || github.ref == 'refs/heads/main')) || github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -83,7 +84,7 @@ jobs:
           path: ./public
 
   sync_job:
-    if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true)
+    if: (github.event_name == 'push' && (github.ref == 'refs/heads/dev'))
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -95,3 +96,21 @@ jobs:
           from_branch: ${{ github.ref }}
           target_branch: main
           message: Merge branch 'dev'
+
+  deploy:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: github-pages
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
