@@ -31,6 +31,9 @@ jobs:
           git log --oneline
           git fetch origin main:main
           git checkout main
+          git branch -r
+          git branch
+          git log
       - name: Merge to main
         run: |
           git merge --no-ff dev
