@@ -2,6 +2,8 @@ name: Build Gatsby site
 
 on:
   # Runs on pushes targeting the default branch
+  push:
+    branches: ["dev"]
   pull_request:
     branches: ["dev"]
     types: [opened, synchronize, reopened]

@@ -21,3 +21,4 @@ jobs:
           type: now
           from_branch: ${{ github.ref }}
           target_branch: main
+          message: Merge branch 'dev'
