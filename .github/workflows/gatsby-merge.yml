@@ -25,6 +25,10 @@ jobs:
           git config user.email "minho119@ajou.ac.kr"
       - name: Checkout main branch
         run: |
+          git status
+          git branch -r
+          git branch
+          git log --oneline
           git fetch origin main:main
           git checkout main
       - name: Merge to main
