@@ -1,0 +1,33 @@
+name: Automatically merge into the Main Branch
+
+on:
+  push:
+    branches: [dev]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup Git
+        run: |
+          git config user.name "Mincrohn"
+          git config user.email "minho119@ajou.ac.kr"
+      - name: Checkout main branch
+        run: |
+          git fetch origin main:main
+          git checkout main
+      - name: Merge to main
+        run: |
+          git merge --no-ff dev
+          git push origin main

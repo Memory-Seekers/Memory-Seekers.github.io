@@ -4,7 +4,7 @@ on:
   # Runs on pushes targeting the default branch
   pull_request:
     branches: ["dev"]
-    types: [opened, synchronize, reopened, closed]
+    types: [opened, synchronize, reopened]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -79,17 +79,3 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./public
-
-  merge:
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Merge to main
-        run: |
-          git checkout main
-          git merge --no-ff dev
-          git push origin main
