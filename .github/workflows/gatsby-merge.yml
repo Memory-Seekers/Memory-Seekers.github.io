@@ -4,40 +4,20 @@ on:
   push:
     branches: [dev]
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+  workflow_dispatch:
 
 defaults:
   run:
     shell: bash
 
 jobs:
-  merge:
+  sync_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+      - name: Sync ${{ github.ref }} to main
+        uses: devmasx/merge-branch@master
         with:
-          ref: dev
-      - name: Setup Git
-        run: |
-          git config user.name "Mincrohn"
-          git config user.email "minho119@ajou.ac.kr"
-      - name: Checkout main branch
-        run: |
-          git status
-          git pull origin dev
-          git branch -r
-          git branch
-          git log --oneline
-          git fetch origin main:main
-          git checkout main
-          git branch -r
-          git branch
-          git log --oneline
-      - name: Merge to main
-        run: |
-          git merge --no-ff dev
-          git push origin main
+          GITHUB_TOKEN: ${{secrets.TOKEN}}
+          type: now
+          from_branch: ${{ github.ref }}
+          target_branch: main
