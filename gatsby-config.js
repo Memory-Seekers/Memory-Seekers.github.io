@@ -41,14 +41,6 @@ const corePlugins = [
       path: `${__dirname}/src/images`,
     },
   },
-  {
-    resolve: "gatsby-plugin-react-svg",
-    options: {
-      rule: {
-        include: /images\/icons/, // See below to configure properly
-      },
-    },
-  },
 ]
 
 const devPlugins = [

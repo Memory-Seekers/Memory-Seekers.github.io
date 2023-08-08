@@ -6,9 +6,9 @@ import styled from "styled-components"
 
 import type { UseSiteMetaDataReturnType } from "~/src/hooks/useSiteMetadata"
 
-import GithubIcon from "../../images/icons/github-mark.svg"
-import HomeIcon from "../../images/icons/home_black_24dp.svg"
-import AboutIcon from "../../images/icons/info_black_24dp.svg"
+import HomeIcon from "../../images/icons/Icon_home.png"
+import AboutIcon from "../../images/icons/Icon_info.png"
+import GithubIcon from "../../images/icons/github-mark.png"
 
 import type { UseMenuReturnType } from "./useMenu"
 
@@ -32,9 +32,9 @@ const LinkList: React.FC<LinkListProps> = ({ links, setToggle }) => {
     const isExternalLink = EXTERNAL_LINK_EXP.test(safeLink)
 
     const icons = new Map([
-      [`Home`, <HomeIcon />],
-      [`About`, <AboutIcon />],
-      [`Github`, <GithubIcon />],
+      [`Home`, HomeIcon],
+      [`About`, AboutIcon],
+      [`Github`, GithubIcon],
     ])
     const Icon = icons.get(safeName)
 
@@ -46,7 +46,7 @@ const LinkList: React.FC<LinkListProps> = ({ links, setToggle }) => {
             activeClassName="active"
             onClick={() => setToggle(false)}
           >
-            <MenuIcon src={Icon?.type} />
+            <MenuIcon src={Icon} />
             {name}
           </NavLink>
         </li>
@@ -61,7 +61,7 @@ const LinkList: React.FC<LinkListProps> = ({ links, setToggle }) => {
             to={safeLink}
             activeClassName="active"
           >
-            <MenuIcon src={Icon?.type} />
+            <MenuIcon src={Icon} />
             {name}
           </NavLink>
         </li>
@@ -70,7 +70,7 @@ const LinkList: React.FC<LinkListProps> = ({ links, setToggle }) => {
     return (
       <li key={name}>
         <NavLink to={safeLink} activeClassName="active">
-          <MenuIcon src={Icon?.type} />
+          <MenuIcon src={Icon} />
           {name}
         </NavLink>
       </li>
