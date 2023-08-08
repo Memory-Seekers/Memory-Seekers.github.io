@@ -5,7 +5,6 @@ import { isNil } from "lodash"
 import styled from "styled-components"
 
 import type { UseSiteMetaDataReturnType } from "~/src/hooks/useSiteMetadata"
-import GlobalStyle from "~/src/styles/globalStyle"
 
 import GithubIcon from "../../images/icons/github-mark.svg"
 import HomeIcon from "../../images/icons/home_black_24dp.svg"
@@ -29,13 +28,15 @@ const LinkList: React.FC<LinkListProps> = ({ links, setToggle }) => {
 
     const { link, name } = props
     const safeLink = isNil(link) ? "" : link
+    const safeName = isNil(name) ? "" : name
     const isExternalLink = EXTERNAL_LINK_EXP.test(safeLink)
 
     const icons = new Map([
-      [`Home`, HomeIcon],
-      [`About`, AboutIcon],
-      [`Github`, GithubIcon],
+      [`Home`, <HomeIcon />],
+      [`About`, <AboutIcon />],
+      [`Github`, <GithubIcon />],
     ])
+    const Icon = icons.get(safeName)
 
     if (safeLink === ROOT) {
       return (
@@ -45,7 +46,7 @@ const LinkList: React.FC<LinkListProps> = ({ links, setToggle }) => {
             activeClassName="active"
             onClick={() => setToggle(false)}
           >
-            {name && <MenuIcon src={icons.get(name)} />}
+            <MenuIcon src={Icon?.type} />
             {name}
           </NavLink>
         </li>
@@ -60,7 +61,7 @@ const LinkList: React.FC<LinkListProps> = ({ links, setToggle }) => {
             to={safeLink}
             activeClassName="active"
           >
-            {name && <MenuIcon src={icons.get(name)} />}
+            <MenuIcon src={Icon?.type} />
             {name}
           </NavLink>
         </li>
@@ -69,7 +70,7 @@ const LinkList: React.FC<LinkListProps> = ({ links, setToggle }) => {
     return (
       <li key={name}>
         <NavLink to={safeLink} activeClassName="active">
-          {name && <MenuIcon src={icons.get(name)} />}
+          <MenuIcon src={Icon?.type} />
           {name}
         </NavLink>
       </li>
