@@ -58,8 +58,7 @@ const Home = ({
       <SEO title="Home" />
       <Main>
         <Content>
-          {/* <CategoryFilter categoryList={data.allMarkdownRemark.group} /> */}
-          <PostTitle>Team's Blog</PostTitle>
+          <PostTitle>Memory-Seekers Blog</PostTitle>
           <PostGrid posts={posts} />
         </Content>
       </Main>
