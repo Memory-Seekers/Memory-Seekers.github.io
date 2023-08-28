@@ -16,7 +16,7 @@ const siteMetadata = {
       name: "Home",
     },
     {
-      link: "/about/",
+      link: "/privacy/",
       name: "Privacy",
     },
     {
