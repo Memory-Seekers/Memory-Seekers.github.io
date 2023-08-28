@@ -17,7 +17,7 @@ const siteMetadata = {
     },
     {
       link: "/about/",
-      name: "About",
+      name: "Privacy",
     },
     {
       link: meta.links.github,

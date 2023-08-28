@@ -33,7 +33,7 @@ const LinkList: React.FC<LinkListProps> = ({ links, setToggle }) => {
 
     const icons = new Map([
       [`Home`, HomeIcon],
-      [`About`, AboutIcon],
+      [`Privacy`, AboutIcon],
       [`Github`, GithubIcon],
     ])
     const Icon = icons.get(safeName)
