@@ -8,10 +8,10 @@ import Layout from "~/src/layouts/layout"
 import Markdown from "~/src/styles/markdown"
 import { rhythm } from "~/src/styles/typography"
 
-const About = () => {
+const Privacy = () => {
   const data = useStaticQuery<Queries.Query>(graphql`
-    query About {
-      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/about/" } }) {
+    query Privacy {
+      allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/privacy/" } }) {
         edges {
           node {
             html
@@ -25,7 +25,7 @@ const About = () => {
 
   return (
     <Layout>
-      <SEO title="About" />
+      <SEO title="Privacy" />
       <Container
         dangerouslySetInnerHTML={{ __html: markdown ?? "" }}
         rhythm={rhythm}
@@ -66,4 +66,4 @@ const Container = styled(Markdown).attrs({
   }
 `
 
-export default About
+export default Privacy
